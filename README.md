@@ -1,4 +1,6 @@
 # telegram_bot
+
+## Install
 Raspberry Pi 3 - Telegram Bot
 command /pic Take a pic
 
@@ -7,7 +9,7 @@ $ pip install telepot
 $ pip install telepot --upgrade  # UPGRADE
 
 
-# Run bot as service
+## Run bot as service
 
 cd /lib/systemd/system/
 
@@ -32,14 +34,14 @@ sudo systemctl enable telegram_bot.service
 sudo systemctl start telegram_bot.service
 
 
-# Check status
+### Check status
 sudo systemctl status telegram_bot.service
  
-# Start service
+### Start service
 sudo systemctl start telegram_bot.service
  
-# Stop service
+### Stop service
 sudo systemctl stop telegram_bot.service
  
-# Check service's log
+### Check service's log
 sudo journalctl -f -u telegram_bot.service
