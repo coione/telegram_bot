@@ -1,0 +1,11 @@
+[Unit]
+Description=Telegram bot
+After=multi-user.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/pi/telegram_bot/app.py 510136870:AAH1fC4xqc-0bb6goGrzeuJ0tuBY_3dGVFg 13640231
+Restart=on-abort
+ 
+[Install]
+WantedBy=multi-user.target

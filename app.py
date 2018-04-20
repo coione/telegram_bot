@@ -21,11 +21,9 @@ def on_chat_message(msg):
                 f = urllib.urlopen('/home/pi/telegram_bot/photos/photo.jpg')
                 bot.sendPhoto(chat_id, ('photo.jpg', f))
             else:
-                bot.sendMessage(chat_id, msg['text'])
-        else:
-            keyboard = InlineKeyboardMarkup(inline_keyboard=[
-                           [InlineKeyboardButton(text='Foto', callback_data='foto')],
-                       ])
+                keyboard = InlineKeyboardMarkup(inline_keyboard=[
+                               [InlineKeyboardButton(text='Foto', callback_data='foto')],
+                           ])
 
             bot.sendMessage(chat_id, 'Menu', reply_markup=keyboard)
     else:
@@ -44,7 +42,7 @@ def on_callback_query(msg):
 def capture_frame():
     with picamera.PiCamera() as cam:
         time.sleep(2)
-        cam.rotation = -90
+        cam.rotation = 0
         cam.capture('/home/pi/telegram_bot/photos/photo.jpg')
 
 TOKEN = sys.argv[1]
