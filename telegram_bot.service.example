@@ -4,7 +4,7 @@ After=multi-user.target
  
 [Service]
 Type=simple
-ExecStart=/usr/bin/python /home/pi/telegram_bot/app.py 510136870:AAH1fC4xqc-0bb6goGrzeuJ0tuBY_3dGVFg 13640231
+ExecStart=/usr/bin/python /home/pi/telegram_bot/app.py <TOKEN> <CHAT_ID>
 Restart=on-abort
  
 [Install]
