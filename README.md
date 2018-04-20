@@ -33,6 +33,8 @@ sudo systemctl daemon-reload
 sudo systemctl enable telegram_bot.service
 sudo systemctl start telegram_bot.service
 
+Example service systemd file is in root folder
+telegram_bot.service.example
 
 ### Check status
 sudo systemctl status telegram_bot.service
