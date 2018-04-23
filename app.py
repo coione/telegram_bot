@@ -14,18 +14,18 @@ def on_chat_message(msg):
     print('Chat:', content_type, chat_type, chat_id)
     print('Chat:', CHATID)
 
-    if chat_id == CHATID:
+    if chat_type == 'group' and chat_id == CHATID:
         if content_type == 'text':
-            if msg['text'] == '/pic':
+            print(msg['text'])
+            if msg['text'] == '/pic@coione_bot' or msg['text'] == '/pic':
                 capture_frame()
                 f = urllib.urlopen('/home/pi/telegram_bot/photos/photo.jpg')
                 bot.sendPhoto(chat_id, ('photo.jpg', f))
-            else:
-                keyboard = InlineKeyboardMarkup(inline_keyboard=[
-                               [InlineKeyboardButton(text='Foto', callback_data='foto')],
-                           ])
-
-            bot.sendMessage(chat_id, 'Menu', reply_markup=keyboard)
+#            else:
+#                keyboard = InlineKeyboardMarkup(inline_keyboard=[
+#                               [InlineKeyboardButton(text='Foto', callback_data='foto')],
+#                           ])
+#            bot.sendMessage(chat_id, 'Menu', reply_markup=keyboard)
     else:
         bot.sendMessage(chat_id, 'Access denied!')
 
@@ -33,7 +33,7 @@ def on_callback_query(msg):
     query_id, chat_id, query_data = telepot.glance(msg, flavor='callback_query')
     print('Callback Query:', query_id, chat_id, query_data)
 
-    if chat_id == CHATID:
+    if chat_type == 'group' and chat_id == CHATID:
         capture_frame()
         f = urllib.urlopen('/home/pi/telegram_bot/photos/photo.jpg')
         bot.sendPhoto(chat_id, ('photo.jpg', f))
