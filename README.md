@@ -16,21 +16,25 @@ cd /lib/systemd/system/
 sudo nano telegram_bot.service
 
 [Unit]
-Description=Telegram Bot
+Description=Telegram bot
 After=multi-user.target
- 
+
 [Service]
 Type=simple
-ExecStart=/usr/bin/python /home/pi/telegram_bot/messages.py <TOKEN> <CHAT_ID>
-Restart=on-abort
- 
+ExecStart=/usr/bin/python /home/pi/telegram_bot/app.py <TOKEN> <CHAT_ID>
+Restart=always
+
 [Install]
 WantedBy=multi-user.target
 
 sudo chmod 644 /lib/systemd/system/telegram_bot.service
+
 chmod +x /home/pi/telegram_bot/messages.py
+
 sudo systemctl daemon-reload
+
 sudo systemctl enable telegram_bot.service
+
 sudo systemctl start telegram_bot.service
 
 Example service systemd file (telegram_bot.service.example) is in root folder
